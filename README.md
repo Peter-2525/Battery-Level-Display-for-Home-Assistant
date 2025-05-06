@@ -1,4 +1,4 @@
-# 🔋 iPhone Battery Level Display for Home Assistant
+# 🔋 Lovelace Battery Level Display for Home Assistant
 
 This project provides a sleek, visual representation of iPhone battery levels directly within your Home Assistant dashboard.
 
