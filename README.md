@@ -17,3 +17,8 @@ It includes:
 
 Copy the following PNG images into this directory in your Home Assistant setup:
 
+## 📷 Preview
+
+Here’s what the battery display looks like:
+
+![Battery Preview](./screenshot.png)
