@@ -1,4 +1,4 @@
-.yamltype: custom:layout-card
+type: custom:layout-card
 layout_type: vertical
 cards:
   - type: horizontal-stack
@@ -14,6 +14,7 @@ cards:
             [[[
               const lvl = parseInt(entity.state);
               let img = '/local/battery/battery_0.png';
+              if (lvl > 5) img = '/local/battery/battery_5.png';
               if (lvl > 15) img = '/local/battery/battery_15.png';
               if (lvl > 35) img = '/local/battery/battery_35.png';
               if (lvl > 75) img = '/local/battery/battery_75.png';
@@ -62,6 +63,7 @@ cards:
             [[[
               const lvl = parseInt(entity.state);
               let img = '/local/battery/battery_0.png';
+              if (lvl > 5) img = '/local/battery/battery_5.png';
               if (lvl > 15) img = '/local/battery/battery_15.png';
               if (lvl > 35) img = '/local/battery/battery_35.png';
               if (lvl > 75) img = '/local/battery/battery_75.png';
@@ -110,6 +112,7 @@ cards:
             [[[
               const lvl = parseInt(entity.state);
               let img = '/local/battery/battery_0.png';
+              if (lvl > 5) img = '/local/battery/battery_5.png';
               if (lvl > 15) img = '/local/battery/battery_15.png';
               if (lvl > 35) img = '/local/battery/battery_35.png';
               if (lvl > 75) img = '/local/battery/battery_75.png';
@@ -158,6 +161,7 @@ cards:
             [[[
               const lvl = parseInt(entity.state);
               let img = '/local/battery/battery_0.png';
+              if (lvl > 5) img = '/local/battery/battery_5.png';
               if (lvl > 15) img = '/local/battery/battery_15.png';
               if (lvl > 35) img = '/local/battery/battery_35.png';
               if (lvl > 75) img = '/local/battery/battery_75.png';
@@ -206,6 +210,7 @@ cards:
             [[[
               const lvl = parseInt(entity.state);
               let img = '/local/battery/battery_0.png';
+              if (lvl > 5) img = '/local/battery/battery_5.png';
               if (lvl > 15) img = '/local/battery/battery_15.png';
               if (lvl > 35) img = '/local/battery/battery_35.png';
               if (lvl > 75) img = '/local/battery/battery_75.png';
