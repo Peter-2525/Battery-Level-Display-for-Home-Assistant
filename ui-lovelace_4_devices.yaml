@@ -1,4 +1,4 @@
-type: custom:layout-card
+.yamltype: custom:layout-card
 layout_type: vertical
 cards:
   - type: horizontal-stack
