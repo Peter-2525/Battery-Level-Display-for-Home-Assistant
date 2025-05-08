@@ -30,7 +30,7 @@ These represent battery level thresholds and are dynamically selected based on d
 Two example Lovelace configurations are provided:
 
 - `ui-lovelace_2_devices.yaml`: For displaying **2 devices**
-- `ui-lovelace_4_devices.yaml`: For displaying **4 devices**
+- `ui-lovelace_5_devices.yaml`: For displaying **4 devices**
 
 You can copy the relevant YAML code into a `manual` dashboard or use it as a card configuration.
 
@@ -44,11 +44,11 @@ Here’s what the 2-device battery display looks like:
 
 ---
 
-## 📷 Preview: Four Devices
+## 📷 Preview: Five Devices
 
 Here’s what the 4-device battery layout looks like:
 
-![Battery Preview (4 Devices)](./screenshot_3.png)
+![Battery Preview (5 Devices)](./screenshot_3.png)
 
 ---
 
