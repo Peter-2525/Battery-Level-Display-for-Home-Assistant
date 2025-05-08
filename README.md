@@ -18,6 +18,7 @@ It includes:
 Place the following PNG files into `/config/www/battery/` in your Home Assistant setup:
 
 - `battery_0.png`
+- `battery_5.png`
 - `battery_15.png`
 - `battery_35.png`
 - `battery_75.png`
