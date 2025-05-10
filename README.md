@@ -34,10 +34,10 @@ Place the following image files into your Home Assistant `/config/www/battery/` 
 
 <table>
   <tr>
-    <td width="150" height="150" align="center"><img src="www/battery/battery_0.png" width="120" height="120"/></td>
-    <td width="150" height="150" align="center"><img src="www/battery/battery_5.png" width="120" height="120"/></td>
-    <td width="150" height="150" align="center"><img src="www/battery/battery_15.png" width="120" height="120"/></td>
-    <td width="150" height="150" align="center"><img src="www/battery/battery_35.png" width="120" height="120"/></td>
+    <td width="200" height="200" align="center"><img src="www/battery/battery_0.png" width="180" height="180"/></td>
+    <td width="200" height="200" align="center"><img src="www/battery/battery_5.png" width="180" height="180"/></td>
+    <td width="200" height="200" align="center"><img src="www/battery/battery_15.png" width="180" height="180"/></td>
+    <td width="200" height="200" align="center"><img src="www/battery/battery_35.png" width="180" height="180"/></td>
   </tr>
   <tr>
     <td align="center"><strong>0%</strong></td>
@@ -46,10 +46,10 @@ Place the following image files into your Home Assistant `/config/www/battery/` 
     <td align="center"><strong>35%</strong></td>
   </tr>
   <tr>
-    <td width="150" height="150" align="center"><img src="www/battery/battery_50.png" width="120" height="120"/></td>
-    <td width="150" height="150" align="center"><img src="www/battery/battery_75.png" width="120" height="120"/></td>
-    <td width="150" height="150" align="center"><img src="www/battery/battery_90.png" width="120" height="120"/></td>
-    <td width="150" height="150" align="center"><img src="www/battery/battery_100.png" width="120" height="120"/></td>
+    <td width="200" height="200" align="center"><img src="www/battery/battery_50.png" width="180" height="180"/></td>
+    <td width="200" height="200" align="center"><img src="www/battery/battery_75.png" width="180" height="180"/></td>
+    <td width="200" height="200" align="center"><img src="www/battery/battery_90.png" width="180" height="180"/></td>
+    <td width="200" height="200" align="center"><img src="www/battery/battery_100.png" width="180" height="180"/></td>
   </tr>
   <tr>
     <td align="center"><strong>50%</strong></td>
@@ -59,7 +59,7 @@ Place the following image files into your Home Assistant `/config/www/battery/` 
   </tr>
   <tr>
     <td colspan="4" align="center">
-      <img src="www/battery/battery_charging.png" width="120" height="120" /><br />
+      <img src="www/battery/battery_charging.png" width="180" height="180" /><br />
       <strong>Charging Overlay</strong>
     </td>
   </tr>
