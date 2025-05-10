@@ -1,13 +1,9 @@
 # 🔋 Lovelace Battery Level Display for Home Assistant
 
-This project provides a sleek, visual representation of battery levels (e.g., iPhones or other devices) directly within your Home Assistant dashboard.
-
-It includes:
-
-- 📊 A **template sensor** that maps raw battery values to discrete levels (0, 5, 15, 35, 75, 100)
-- 🧱 A **Lovelace card layout** using `custom:button-card` and `custom:layout-card`
-- 🖼️ Custom battery icons stored locally (`/config/www/battery/`) for accurate display
-- 📱 Support for multiple devices (examples include 2 and 4-device layouts)
+- 📊 Template sensor mapping raw battery levels to: 0, 5, 15, 35, 50, 75, 90, 100
+- 🧱 Lovelace card layout using `custom:button-card` and `custom:layout-card`
+- 🖼️ Battery icons in `/config/www/battery/`
+- 📱 Multi-device display (2 or 5 devices)
 
 ---
 
@@ -15,46 +11,41 @@ It includes:
 
 ### 1. Upload Battery Icons
 
-Place the following PNG files into `/config/www/battery/` in your Home Assistant setup:
+Put the following files in `/config/www/battery/`:
 
 - `battery_0.png`
 - `battery_5.png`
 - `battery_15.png`
 - `battery_35.png`
+- `battery_50.png`
 - `battery_75.png`
+- `battery_90.png`
 - `battery_100.png`
-
-These represent battery level thresholds and are dynamically selected based on device battery state.
-
-### 2. Add Lovelace YAML
-
-Two example Lovelace configurations are provided:
-
-- `ui-lovelace_2_devices.yaml`: For displaying **2 devices**
-- `ui-lovelace_5_devices.yaml`: For displaying **5 devices**
-
-You can copy the relevant YAML code into a `manual` dashboard or use it as a card configuration.
 
 ---
 
-## 📷 Preview: Dual Batteries
+## 🖼️ Battery Icon Previews
 
-Here’s what the 2-device battery display looks like:
+| Level | Preview |
+|-------|---------|
+| 0%    | ![0%](./battery/battery_0.png) |
+| 5%    | ![5%](./battery/battery_5.png) |
+| 15%   | ![15%](./battery/battery_15.png) |
+| 35%   | ![35%](./battery/battery_35.png) |
+| 50%   | ![50%](./battery/battery_50.png) |
+| 75%   | ![75%](./battery/battery_75.png) |
+| 90%   | ![90%](./battery/battery_90.png) |
+| 100%  | ![100%](./battery/battery_100.png) |
+
+---
+
+## 📷 Preview: 2 Devices
 
 ![Battery Preview (2 Devices)](./screenshot.png)
 
 ---
 
-## 📷 Preview: Five Devices
-
-Here’s what the 4-device battery layout looks like:
+## 📷 Preview: 5 Devices
 
 ![Battery Preview (5 Devices)](./screenshot_3.png)
 
----
-
-## 📷 Additional Example
-
-Alternate visual layout preview:
-
-![Battery Preview Example](./screenshot_2.png)
