@@ -8,7 +8,7 @@ cards:
 
       # 🔋 FIRST CARD — iPhone Battery
       - type: custom:button-card
-        entity: sensor.iphone_p_lemieux_battery_level
+        entity: sensor.battery_level
         name: 🔋 iPhone
         show_state: true
         show_icon: false
@@ -25,7 +25,7 @@ cards:
               if (lvl > 75) img = '/local/battery/battery_75.png';
               if (lvl > 90) img = '/local/battery/battery_90.png';
               if (lvl >= 100) img = '/local/battery/battery_100.png';
-              const charging = states['sensor.iphone_p_lemieux_battery_state']?.state === 'Charging';
+              const charging = states['sensor.battery_state']?.state === 'Charging';
               const overlay = charging
                 ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
                 : '';
@@ -65,7 +65,7 @@ cards:
 
       # 📱 SECOND CARD — iPhone#2 Battery
       - type: custom:button-card
-        entity: sensor.iphone_p_lemieux_battery_level
+        entity: sensor.battery_level
         name: 📱 iPhone#2
         show_state: true
         show_icon: false
@@ -82,7 +82,7 @@ cards:
               if (lvl > 75) img = '/local/battery/battery_75.png';
               if (lvl > 90) img = '/local/battery/battery_90.png';
               if (lvl >= 100) img = '/local/battery/battery_100.png';
-              const charging = states['sensor.iphone_p_lemieux_battery_state']?.state === 'Charging';
+              const charging = states['sensor.battery_state']?.state === 'Charging';
               const overlay = charging
                 ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
                 : '';
