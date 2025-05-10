@@ -28,24 +28,19 @@ Put the following files in `/config/www/battery/`:
 
 | Level | Preview |
 |-------|---------|
-| 0%    | ![0%](./battery/battery_0.png) |
-| 5%    | ![5%](./battery/battery_5.png) |
-| 15%   | ![15%](./battery/battery_15.png) |
-| 35%   | ![35%](./battery/battery_35.png) |
-| 50%   | ![50%](./battery/battery_50.png) |
-| 75%   | ![75%](./battery/battery_75.png) |
-| 90%   | ![90%](./battery/battery_90.png) |
-| 100%  | ![100%](./battery/battery_100.png) |
+| 0%    | ![0%](www/battery/battery_0.png) |
+| 5%    | ![5%](www/battery/battery_5.png) |
+| 15%   | ![15%](www/battery/battery_15.png) |
+| 35%   | ![35%](www/battery/battery_35.png) |
+| 50%   | ![50%](www/battery/battery_50.png) |
+| 75%   | ![75%](www/battery/battery_75.png) |
+| 90%   | ![90%](www/battery/battery_90.png) |
+| 100%  | ![100%](www/battery/battery_100.png) |
+
 
 ---
 
 ## 📷 Preview: 2 Devices
 
 ![Battery Preview (2 Devices)](./screenshot.png)
-
----
-
-## 📷 Preview: 5 Devices
-
-![Battery Preview (5 Devices)](./screenshot_3.png)
 
