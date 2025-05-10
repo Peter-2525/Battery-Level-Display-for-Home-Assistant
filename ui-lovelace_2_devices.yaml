@@ -12,7 +12,7 @@ cards:
       # 🔋 CARD 1 — BATTERY DISPLAY FOR IPHONE (Main Device)
       # ====================================================
       - type: custom:button-card  # 🎛️ Fully custom button-card for battery visualization
-        entity: sensor.iphone_p_lemieux_battery_level  # 🔌 iPhone battery level sensor
+        entity: sensor.battery_level  # 🔌 iPhone battery level sensor
         name: 🔋 iPhone                                 # 🏷️ Display name with emoji icon
         show_state: true                               # ✅ Show battery percentage (e.g., 76%)
         show_icon: false                               # ❌ Disable default icon
@@ -78,7 +78,7 @@ cards:
       # 📱 CARD 2 — BATTERY DISPLAY FOR IPHONE (Secondary)
       # =====================================================
       - type: custom:button-card  # 🎛️ Another button-card for second iPhone
-        entity: sensor.iphone_p_lemieux_battery_level  # ⚠️ Use another sensor if available
+        entity: sensor.battery_level  # ⚠️ Use another sensor if available
         name: 📱 iPhone#2                                # 🏷️ Distinct name with emoji
         show_state: true
         show_icon: false
