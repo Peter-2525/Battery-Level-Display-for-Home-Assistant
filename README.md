@@ -26,16 +26,35 @@ Put the following files in `/config/www/battery/`:
 
 ## 🖼️ Battery Icon Previews
 
-<p align="center">
-  <img src="www/battery/battery_0.png" width="50"/>
-  <img src="www/battery/battery_5.png" width="50"/>
-  <img src="www/battery/battery_15.png" width="50"/>
-  <img src="www/battery/battery_35.png" width="50"/>
-  <img src="www/battery/battery_50.png" width="50"/>
-  <img src="www/battery/battery_75.png" width="50"/>
-  <img src="www/battery/battery_90.png" width="50"/>
-  <img src="www/battery/battery_100.png" width="50"/>
-</p>
+<table>
+  <tr>
+    <td width="150" height="150" align="center"><img src="www/battery/battery_0.png" width="120" height="120"/></td>
+    <td width="150" height="150" align="center"><img src="www/battery/battery_5.png" width="120" height="120"/></td>
+    <td width="150" height="150" align="center"><img src="www/battery/battery_15.png" width="120" height="120"/></td>
+    <td width="150" height="150" align="center"><img src="www/battery/battery_35.png" width="120" height="120"/></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>0%</strong></td>
+    <td align="center"><strong>5%</strong></td>
+    <td align="center"><strong>15%</strong></td>
+    <td align="center"><strong>35%</strong></td>
+  </tr>
+  <tr>
+    <td width="150" height="150" align="center"><img src="www/battery/battery_50.png" width="120" height="120"/></td>
+    <td width="150" height="150" align="center"><img src="www/battery/battery_75.png" width="120" height="120"/></td>
+    <td width="150" height="150" align="center"><img src="www/battery/battery_90.png" width="120" height="120"/></td>
+    <td width="150" height="150" align="center"><img src="www/battery/battery_100.png" width="120" height="120"/></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>50%</strong></td>
+    <td align="center"><strong>75%</strong></td>
+    <td align="center"><strong>90%</strong></td>
+    <td align="center"><strong>100%</strong></td>
+  </tr>
+</table>
+
+
+
 
 ---
 
