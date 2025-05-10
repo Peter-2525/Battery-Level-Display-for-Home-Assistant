@@ -1,102 +1,113 @@
-# =======================================
-# 📦 LAYOUT CONTAINER FOR THE ENTIRE CARD
-# =======================================
-type: custom:layout-card  # 🧱 Uses layout-card to manage advanced layout types
-layout_type: vertical     # 📐 Arranges child cards in a vertical stack
+# ======================================================
+# 🧱 LAYOUT CONTAINER — STACKING TWO IPHONE BATTERY CARDS
+# ======================================================
+type: custom:layout-card  # 📦 Advanced layout manager
+layout_type: vertical     # 🔃 Stack child cards vertically
 
 cards:
-  - type: horizontal-stack  # ➡️ Places child cards (iPhones) side-by-side in a row
+  - type: horizontal-stack  # 📏 Arrange child cards side by side in one row
     cards:
 
-      # ======================================
-      # 🔋 CARD 1: Battery Display for iPhone
-      # ======================================
-      - type: custom:button-card  # 🖼️ Uses the powerful button-card for full customization
-        entity: sensor.iphone_p_lemieux_battery_level  # 📡 Battery level sensor entity (replace if needed)
-        name: 🔋 iPhone          # 🏷️ Text label displayed at the top of the card
-        show_state: true         # ✅ Show numeric battery percentage below the icon
-        show_icon: false         # ❌ Hide the default icon (we’re using a custom image instead)
-        show_name: true          # ✅ Display the name at the top of the card
+      # ====================================================
+      # 🔋 CARD 1 — BATTERY DISPLAY FOR IPHONE (Main Device)
+      # ====================================================
+      - type: custom:button-card  # 🎛️ Fully custom button-card for battery visualization
+        entity: sensor.iphone_p_lemieux_battery_level  # 🔌 iPhone battery level sensor
+        name: 🔋 iPhone                                 # 🏷️ Display name with emoji icon
+        show_state: true                               # ✅ Show battery percentage (e.g., 76%)
+        show_icon: false                               # ❌ Disable default icon
+        show_name: true                                # ✅ Enable custom name display
 
-        # --------------------------------------
-        # 🧩 Custom HTML field for battery image
-        # --------------------------------------
+        # -----------------------------------------
+        # 🧩 Dynamic field for the battery image
+        # -----------------------------------------
         custom_fields:
           battery_img: |
             [[[
-              const lvl = parseInt(entity.state);  // 🔢 Read battery level from the sensor (as integer)
-              let img = '/local/battery/battery_0.png';  // 🔋 Default image for 0%
+              const lvl = parseInt(entity.state);  // 🔢 Convert battery % to integer
+              let img = '/local/battery/battery_0.png';  // 🔋 Default image (0%)
 
-              // 🟠 Conditional logic to switch battery image based on level
-              if (lvl > 15) img = '/local/battery/battery_15.png';   // 🔋 Low
-              if (lvl > 35) img = '/local/battery/battery_35.png';   // 🔋 Medium
-              if (lvl > 75) img = '/local/battery/battery_75.png';   // 🔋 High
-              if (lvl > 90) img = '/local/battery/battery_100.png';  // 🔋 Full
+              // 📈 Thresholds for selecting battery icon
+              if (lvl > 5) img = '/local/battery/battery_5.png';
+              if (lvl > 15) img = '/local/battery/battery_15.png';
+              if (lvl > 35) img = '/local/battery/battery_35.png';
+              if (lvl > 50) img = '/local/battery/battery_50.png';   // 🆕 New 50%
+              if (lvl > 75) img = '/local/battery/battery_75.png';
+              if (lvl > 90) img = '/local/battery/battery_90.png';   // 🆕 New 90%
+              if (lvl >= 100) img = '/local/battery/battery_100.png';
 
-              // 📸 Return HTML <img> with chosen image and height
-              return `<img src="${img}" style="height: 200px;" />`;
+              return `<img src="${img}" style="height: 200px;" />`;  // 🖼️ Render image
             ]]]
 
-        # ----------------------------------------
-        # 🎨 STYLING: Visual appearance of the card
-        # ----------------------------------------
+        # ---------------------------------------
+        # 🎨 Styling for layout, text, and image
+        # ---------------------------------------
         styles:
           card:
-            - height: 160px                         # ⬆️ Total card height
-            - background-color: "#2c3e50"           # 🎨 Dark background
-            - position: relative                    # 📌 Allows absolute positioning inside
-            - padding: 0                            # 🧱 Remove padding to make image fit tighter
-            - border-radius: 20px                   # 🟣 Rounded corners
-            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)  # 💨 Soft drop shadow
-            - color: white                          # ✏️ Text color
-
+            - height: 160px
+            - background-color: "#2c3e50"  # 🎨 Dark card background
+            - position: relative
+            - padding: 0
+            - border-radius: 20px          # 🟦 Rounded corners
+            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)  # 💨 Shadow effect
+            - color: white
           name:
-            - position: absolute                    # 📍 Position absolutely inside the card
-            - top: 5%                               # 🔝 Distance from the top
-            - left: 50%                             # ⬅️ Center horizontally
-            - transform: translateX(-50%)           # 🎯 Perfect centering trick
-            - font-size: 20px                       # 🔠 Font size of the name
-            - font-weight: 400                      # 🅱️ Normal font weight
-            - text-shadow: 1px 1px 2px black        # 🌫️ Slight glow for readability
-
+            - position: absolute
+            - top: 5%
+            - left: 50%
+            - transform: translateX(-50%)  # 🔁 Center horizontally
+            - font-size: 20px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
           state:
-            - position: absolute                    # 🧷 Position battery percentage text
-            - bottom: 10%                           # 🔻 Distance from the bottom
-            - left: 50%                             # ⬅️ Center horizontally
-            - transform: translateX(-50%)           # 🎯 Centering
-            - font-size: 18px                       # 🔡 Font size for battery %
-            - font-weight: 400                      # 🅱️ Normal weight
-            - text-shadow: 1px 1px 2px black        # ✨ Makes white text readable on dark background
-
+            - position: absolute
+            - bottom: 10%
+            - left: 50%
+            - transform: translateX(-50%)  # 🔁 Center horizontally
+            - font-size: 18px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
           custom_fields:
             battery_img:
-              - position: absolute                  # 🖼️ Absolutely position image
-              - top: 65%                            # ⬇️ Position image in the middle-lower area
-              - left: 50%                           # ➡️ Center horizontally
-              - transform: translate(-50%, -50%)    # 🔁 True centering on both axes
+              - position: absolute
+              - top: 65%
+              - left: 50%
+              - transform: translate(-50%, -50%)  # 🔁 Center image both axes
 
-      # ========================================
-      # 📱 CARD 2: Battery Display for iPhone #2
-      # ========================================
-      - type: custom:button-card
-        entity: sensor.iphone_p_lemieux_battery_level  # ⚠️ Same entity as card 1 — replace with iPhone#2 sensor!
-        name: 📱 Iphone#2
+      # =====================================================
+      # 📱 CARD 2 — BATTERY DISPLAY FOR IPHONE (Secondary)
+      # =====================================================
+      - type: custom:button-card  # 🎛️ Another button-card for second iPhone
+        entity: sensor.iphone_p_lemieux_battery_level  # ⚠️ Use another sensor if available
+        name: 📱 iPhone#2                                # 🏷️ Distinct name with emoji
         show_state: true
         show_icon: false
         show_name: true
 
+        # -----------------------------------------
+        # 🧩 Dynamic field for the battery image
+        # -----------------------------------------
         custom_fields:
           battery_img: |
             [[[
-              const lvl = parseInt(entity.state);
+              const lvl = parseInt(entity.state);  // 🔢 Convert battery % to integer
               let img = '/local/battery/battery_0.png';
+
+              // 📈 Thresholds for battery icons
+              if (lvl > 5) img = '/local/battery/battery_5.png';
               if (lvl > 15) img = '/local/battery/battery_15.png';
               if (lvl > 35) img = '/local/battery/battery_35.png';
+              if (lvl > 50) img = '/local/battery/battery_50.png';   // 🆕 New 50%
               if (lvl > 75) img = '/local/battery/battery_75.png';
-              if (lvl > 90) img = '/local/battery/battery_100.png';
-              return `<img src="${img}" style="height: 200px;" />`;
+              if (lvl > 90) img = '/local/battery/battery_90.png';   // 🆕 New 90%
+              if (lvl >= 100) img = '/local/battery/battery_100.png';
+
+              return `<img src="${img}" style="height: 200px;" />`;  // 🖼️ Render image
             ]]]
 
+        # ---------------------------------------
+        # 🎨 Styling for layout, text, and image
+        # ---------------------------------------
         styles:
           card:
             - height: 160px
@@ -106,7 +117,6 @@ cards:
             - border-radius: 20px
             - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)
             - color: white
-
           name:
             - position: absolute
             - top: 5%
@@ -115,7 +125,6 @@ cards:
             - font-size: 20px
             - font-weight: 400
             - text-shadow: 1px 1px 2px black
-
           state:
             - position: absolute
             - bottom: 10%
@@ -124,7 +133,6 @@ cards:
             - font-size: 18px
             - font-weight: 400
             - text-shadow: 1px 1px 2px black
-
           custom_fields:
             battery_img:
               - position: absolute
