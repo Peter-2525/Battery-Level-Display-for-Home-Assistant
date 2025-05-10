@@ -1,68 +1,11 @@
-# 🧱 Layout card to arrange battery widgets vertically
 type: custom:layout-card
-layout_type: vertical  # 📐 Vertical stacking layout for nested cards
-
+layout_type: vertical
 cards:
-  - type: horizontal-stack  # 📊 Horizontal row of battery cards
+  - type: horizontal-stack
     cards:
-
-      # 🔋 Rear Left Battery Widget
-      - type: custom:button-card  # 🎛️ Custom button card for battery
-        entity: sensor.rear_left_battery_level  # 🔌 Battery level entity
-        name: 🛜⬅  # 🏷️ Label with icon for rear left
-        show_state: true  # 📟 Show battery percentage
-        show_icon: false  # ❌ Hide default icon
-        show_name: true  # ✅ Show custom name
-        custom_fields:
-          battery_img: |  # 🖼️ Dynamic image based on battery level
-            [[[
-              const lvl = parseInt(entity.state);  // 🔢 Parse battery level
-              let img = '/local/battery/battery_0.png';  // 🔋 Default empty image
-              if (lvl > 5) img = '/local/battery/battery_5.png';
-              if (lvl > 15) img = '/local/battery/battery_15.png';
-              if (lvl > 35) img = '/local/battery/battery_35.png';
-              if (lvl > 50) img = '/local/battery/battery_50.png';  // ➕ New 50%
-              if (lvl > 75) img = '/local/battery/battery_75.png';
-              if (lvl > 90) img = '/local/battery/battery_90.png';  // ➕ New 90%
-              if (lvl >= 100) img = '/local/battery/battery_100.png';
-              return `<img src="${img}" style="height: 200px;" />`;
-            ]]]
-        styles:
-          card:  # 🎨 Card styling
-            - height: 160px
-            - background-color: "#2c3e50"
-            - position: relative
-            - padding: 0
-            - border-radius: 20px
-            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)
-            - color: white
-          name:  # 🏷️ Name label styling
-            - position: absolute
-            - top: 5%
-            - left: 50%
-            - transform: translateX(-50%)
-            - font-size: 20px
-            - font-weight: 400
-            - text-shadow: 1px 1px 2px black
-          state:  # 🔢 Battery % value styling
-            - position: absolute
-            - bottom: 10%
-            - left: 50%
-            - transform: translateX(-50%)
-            - font-size: 18px
-            - font-weight: 400
-            - text-shadow: 1px 1px 2px black
-          custom_fields:
-            battery_img:  # 🖼️ Battery image styling
-              - position: absolute
-              - top: 65%
-              - left: 50%
-              - transform: translate(-50%, -50%)
-
-      # 🔋 Rear Right Battery Widget
       - type: custom:button-card
-        entity: sensor.rear_right_battery_level
-        name: 🛜➡
+        entity: sensor.rear_left_battery_level
+        name: 🛜⬅️
         show_state: true
         show_icon: false
         show_name: true
@@ -78,11 +21,100 @@ cards:
               if (lvl > 75) img = '/local/battery/battery_75.png';
               if (lvl > 90) img = '/local/battery/battery_90.png';
               if (lvl >= 100) img = '/local/battery/battery_100.png';
-              return `<img src="${img}" style="height: 200px;" />`;
+              const charging = states['sensor.rear_left_battery_state']?.state === 'Charging';
+              const overlay = charging
+                ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
+                : '';
+              return `${overlay}<img src="${img}" style="height: 200px;" />`;
             ]]]
-        styles: *same as above*
+        styles:
+          card:
+            - height: 160px
+            - background-color: "#2c3e50"
+            - position: relative
+            - padding: 0
+            - border-radius: 20px
+            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)
+            - color: white
+          name:
+            - position: absolute
+            - top: 5%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 20px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          state:
+            - position: absolute
+            - bottom: 10%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 18px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          custom_fields:
+            battery_img:
+              - position: absolute
+              - top: 65%
+              - left: 50%
+              - transform: translate(-50%, -50%)
 
-      # 🔋 Entry Battery Widget
+      - type: custom:button-card
+        entity: sensor.rear_right_battery_level
+        name: 🛜➡️
+        show_state: true
+        show_icon: false
+        show_name: true
+        custom_fields:
+          battery_img: |
+            [[[
+              const lvl = parseInt(entity.state);
+              let img = '/local/battery/battery_0.png';
+              if (lvl > 5) img = '/local/battery/battery_5.png';
+              if (lvl > 15) img = '/local/battery/battery_15.png';
+              if (lvl > 35) img = '/local/battery/battery_35.png';
+              if (lvl > 50) img = '/local/battery/battery_50.png';
+              if (lvl > 75) img = '/local/battery/battery_75.png';
+              if (lvl > 90) img = '/local/battery/battery_90.png';
+              if (lvl >= 100) img = '/local/battery/battery_100.png';
+              const charging = states['sensor.rear_right_battery_state']?.state === 'Charging';
+              const overlay = charging
+                ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
+                : '';
+              return `${overlay}<img src="${img}" style="height: 200px;" />`;
+            ]]]
+        styles:
+          card:
+            - height: 160px
+            - background-color: "#2c3e50"
+            - position: relative
+            - padding: 0
+            - border-radius: 20px
+            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)
+            - color: white
+          name:
+            - position: absolute
+            - top: 5%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 20px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          state:
+            - position: absolute
+            - bottom: 10%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 18px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          custom_fields:
+            battery_img:
+              - position: absolute
+              - top: 65%
+              - left: 50%
+              - transform: translate(-50%, -50%)
+
       - type: custom:button-card
         entity: sensor.entry_motion_battery_level
         name: 🛜🏠
@@ -101,11 +133,44 @@ cards:
               if (lvl > 75) img = '/local/battery/battery_75.png';
               if (lvl > 90) img = '/local/battery/battery_90.png';
               if (lvl >= 100) img = '/local/battery/battery_100.png';
-              return `<img src="${img}" style="height: 200px;" />`;
+              const charging = states['sensor.entry_motion_battery_state']?.state === 'Charging';
+              const overlay = charging
+                ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
+                : '';
+              return `${overlay}<img src="${img}" style="height: 200px;" />`;
             ]]]
-        styles: *same as above*
+        styles:
+          card:
+            - height: 160px
+            - background-color: "#2c3e50"
+            - position: relative
+            - padding: 0
+            - border-radius: 20px
+            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)
+            - color: white
+          name:
+            - position: absolute
+            - top: 5%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 20px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          state:
+            - position: absolute
+            - bottom: 10%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 18px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          custom_fields:
+            battery_img:
+              - position: absolute
+              - top: 65%
+              - left: 50%
+              - transform: translate(-50%, -50%)
 
-      # 🔋 Water House Battery Widget
       - type: custom:button-card
         entity: sensor.water_house_motion_battery_level
         name: 🛜💧
@@ -124,11 +189,44 @@ cards:
               if (lvl > 75) img = '/local/battery/battery_75.png';
               if (lvl > 90) img = '/local/battery/battery_90.png';
               if (lvl >= 100) img = '/local/battery/battery_100.png';
-              return `<img src="${img}" style="height: 200px;" />`;
+              const charging = states['sensor.water_house_motion_battery_state']?.state === 'Charging';
+              const overlay = charging
+                ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
+                : '';
+              return `${overlay}<img src="${img}" style="height: 200px;" />`;
             ]]]
-        styles: *same as above*
+        styles:
+          card:
+            - height: 160px
+            - background-color: "#2c3e50"
+            - position: relative
+            - padding: 0
+            - border-radius: 20px
+            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)
+            - color: white
+          name:
+            - position: absolute
+            - top: 5%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 20px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          state:
+            - position: absolute
+            - bottom: 10%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 18px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          custom_fields:
+            battery_img:
+              - position: absolute
+              - top: 65%
+              - left: 50%
+              - transform: translate(-50%, -50%)
 
-      # 🔋 Passage Battery Widget
       - type: custom:button-card
         entity: sensor.passage_motion_battery_level
         name: 🛜🛌🏻
@@ -147,6 +245,40 @@ cards:
               if (lvl > 75) img = '/local/battery/battery_75.png';
               if (lvl > 90) img = '/local/battery/battery_90.png';
               if (lvl >= 100) img = '/local/battery/battery_100.png';
-              return `<img src="${img}" style="height: 200px;" />`;
+              const charging = states['sensor.passage_motion_battery_state']?.state === 'Charging';
+              const overlay = charging
+                ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
+                : '';
+              return `${overlay}<img src="${img}" style="height: 200px;" />`;
             ]]]
-        styles: *same as above*
+        styles:
+          card:
+            - height: 160px
+            - background-color: "#2c3e50"
+            - position: relative
+            - padding: 0
+            - border-radius: 20px
+            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)
+            - color: white
+          name:
+            - position: absolute
+            - top: 5%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 20px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          state:
+            - position: absolute
+            - bottom: 10%
+            - left: 50%
+            - transform: translateX(-50%)
+            - font-size: 18px
+            - font-weight: 400
+            - text-shadow: 1px 1px 2px black
+          custom_fields:
+            battery_img:
+              - position: absolute
+              - top: 65%
+              - left: 50%
+              - transform: translate(-50%, -50%)
