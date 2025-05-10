@@ -3,7 +3,7 @@
 Display clean and dynamic battery visuals for any sensor or device in Home Assistant.
 
 - 📊 Battery percentages are **mapped to 8 discrete levels**: 0%, 5%, 15%, 35%, 50%, 75%, 90%, 100%  
-- ⚡ A dedicated **charging overlay icon** is shown when the battery is charging  
+- ⚡ A dedicated **charging overlay** is shown when the battery is charging  
 - 🧱 Built using `custom:button-card` and `custom:layout-card` for flexible UI layouts  
 - 🖼️ Icons are stored locally in `/config/www/battery/`  
 - 📱 Supports **2, 5, or more device layouts** for phones, motion sensors, and remotes
@@ -24,7 +24,6 @@ Place the following image files into your Home Assistant `/config/www/battery/` 
 - `battery_75.png`  
 - `battery_90.png`  
 - `battery_100.png`  
-- `battery_charging.png` ⬅️ _(used as an overlay when the device is charging)_
 
 > 📂 If the `www` folder doesn’t exist yet, create it under `/config/`.
 
@@ -57,12 +56,7 @@ Place the following image files into your Home Assistant `/config/www/battery/` 
     <td align="center"><strong>90%</strong></td>
     <td align="center"><strong>100%</strong></td>
   </tr>
-  <tr>
-    <td colspan="4" align="center">
-      <img src="www/battery/battery_charging.png" width="180" height="180" /><br />
-      <strong>Charging Overlay</strong>
-    </td>
-  </tr>
+  
 </table>
 
 ---
