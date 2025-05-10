@@ -1,61 +1,50 @@
-# ======================================================
-# 🧱 LAYOUT CONTAINER — STACKING TWO IPHONE BATTERY CARDS
-# ======================================================
-type: custom:layout-card  # 📦 Advanced layout manager
-layout_type: vertical     # 🔃 Stack child cards vertically
+# 📐 Layout Card Configuration with Battery Level & Charging Overlay
+type: custom:layout-card
+layout_type: vertical
 
 cards:
-  - type: horizontal-stack  # 📏 Arrange child cards side by side in one row
+  - type: horizontal-stack
     cards:
 
-      # ====================================================
-      # 🔋 CARD 1 — BATTERY DISPLAY FOR IPHONE (Main Device)
-      # ====================================================
-      - type: custom:button-card  # 🎛️ Fully custom button-card for battery visualization
-        entity: sensor.battery_level  # 🔌 iPhone battery level sensor
-        name: 🔋 iPhone                                 # 🏷️ Display name with emoji icon
-        show_state: true                               # ✅ Show battery percentage (e.g., 76%)
-        show_icon: false                               # ❌ Disable default icon
-        show_name: true                                # ✅ Enable custom name display
-
-        # -----------------------------------------
-        # 🧩 Dynamic field for the battery image
-        # -----------------------------------------
+      # 🔋 FIRST CARD — iPhone Battery
+      - type: custom:button-card
+        entity: sensor.iphone_p_lemieux_battery_level
+        name: 🔋 iPhone
+        show_state: true
+        show_icon: false
+        show_name: true
         custom_fields:
           battery_img: |
             [[[
-              const lvl = parseInt(entity.state);  // 🔢 Convert battery % to integer
-              let img = '/local/battery/battery_0.png';  // 🔋 Default image (0%)
-
-              // 📈 Thresholds for selecting battery icon
+              const lvl = parseInt(entity.state);
+              let img = '/local/battery/battery_0.png';
               if (lvl > 5) img = '/local/battery/battery_5.png';
               if (lvl > 15) img = '/local/battery/battery_15.png';
               if (lvl > 35) img = '/local/battery/battery_35.png';
-              if (lvl > 50) img = '/local/battery/battery_50.png';   // 🆕 New 50%
+              if (lvl > 50) img = '/local/battery/battery_50.png';
               if (lvl > 75) img = '/local/battery/battery_75.png';
-              if (lvl > 90) img = '/local/battery/battery_90.png';   // 🆕 New 90%
+              if (lvl > 90) img = '/local/battery/battery_90.png';
               if (lvl >= 100) img = '/local/battery/battery_100.png';
-
-              return `<img src="${img}" style="height: 200px;" />`;  // 🖼️ Render image
+              const charging = states['sensor.iphone_p_lemieux_battery_state']?.state === 'Charging';
+              const overlay = charging
+                ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
+                : '';
+              return `${overlay}<img src="${img}" style="height: 200px;" />`;
             ]]]
-
-        # ---------------------------------------
-        # 🎨 Styling for layout, text, and image
-        # ---------------------------------------
         styles:
           card:
             - height: 160px
-            - background-color: "#2c3e50"  # 🎨 Dark card background
+            - background-color: "#2c3e50"
             - position: relative
             - padding: 0
-            - border-radius: 20px          # 🟦 Rounded corners
-            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)  # 💨 Shadow effect
+            - border-radius: 20px
+            - box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6)
             - color: white
           name:
             - position: absolute
             - top: 5%
             - left: 50%
-            - transform: translateX(-50%)  # 🔁 Center horizontally
+            - transform: translateX(-50%)
             - font-size: 20px
             - font-weight: 400
             - text-shadow: 1px 1px 2px black
@@ -63,7 +52,7 @@ cards:
             - position: absolute
             - bottom: 10%
             - left: 50%
-            - transform: translateX(-50%)  # 🔁 Center horizontally
+            - transform: translateX(-50%)
             - font-size: 18px
             - font-weight: 400
             - text-shadow: 1px 1px 2px black
@@ -72,42 +61,33 @@ cards:
               - position: absolute
               - top: 65%
               - left: 50%
-              - transform: translate(-50%, -50%)  # 🔁 Center image both axes
+              - transform: translate(-50%, -50%)
 
-      # =====================================================
-      # 📱 CARD 2 — BATTERY DISPLAY FOR IPHONE (Secondary)
-      # =====================================================
-      - type: custom:button-card  # 🎛️ Another button-card for second iPhone
-        entity: sensor.battery_level  # ⚠️ Use another sensor if available
-        name: 📱 iPhone#2                                # 🏷️ Distinct name with emoji
+      # 📱 SECOND CARD — iPhone#2 Battery
+      - type: custom:button-card
+        entity: sensor.iphone_p_lemieux_battery_level
+        name: 📱 iPhone#2
         show_state: true
         show_icon: false
         show_name: true
-
-        # -----------------------------------------
-        # 🧩 Dynamic field for the battery image
-        # -----------------------------------------
         custom_fields:
           battery_img: |
             [[[
-              const lvl = parseInt(entity.state);  // 🔢 Convert battery % to integer
+              const lvl = parseInt(entity.state);
               let img = '/local/battery/battery_0.png';
-
-              // 📈 Thresholds for battery icons
               if (lvl > 5) img = '/local/battery/battery_5.png';
               if (lvl > 15) img = '/local/battery/battery_15.png';
               if (lvl > 35) img = '/local/battery/battery_35.png';
-              if (lvl > 50) img = '/local/battery/battery_50.png';   // 🆕 New 50%
+              if (lvl > 50) img = '/local/battery/battery_50.png';
               if (lvl > 75) img = '/local/battery/battery_75.png';
-              if (lvl > 90) img = '/local/battery/battery_90.png';   // 🆕 New 90%
+              if (lvl > 90) img = '/local/battery/battery_90.png';
               if (lvl >= 100) img = '/local/battery/battery_100.png';
-
-              return `<img src="${img}" style="height: 200px;" />`;  // 🖼️ Render image
+              const charging = states['sensor.iphone_p_lemieux_battery_state']?.state === 'Charging';
+              const overlay = charging
+                ? `<img src="/local/battery/battery_charging.png" style='position:absolute; top:0; left:0; right:0; margin:auto; height:40px; z-index:2;' />`
+                : '';
+              return `${overlay}<img src="${img}" style="height: 200px;" />`;
             ]]]
-
-        # ---------------------------------------
-        # 🎨 Styling for layout, text, and image
-        # ---------------------------------------
         styles:
           card:
             - height: 160px
