@@ -59,13 +59,7 @@ Place the following image files into your Home Assistant `/config/www/battery/` 
   
 </table>
 
----
 
-## 📷 Preview: 2 Devices
-
-![Battery Preview (2 Devices)](./screenshot.png)
-
----
 
 ---
 
