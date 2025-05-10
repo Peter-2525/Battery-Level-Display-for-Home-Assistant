@@ -1,9 +1,12 @@
 # 🔋 Lovelace Battery Level Display for Home Assistant
 
-- 📊 Template sensor mapping raw battery levels to: 0, 5, 15, 35, 50, 75, 90, 100  
-- 🧱 Lovelace card layout using `custom:button-card` and `custom:layout-card`  
-- 🖼️ Battery icons in `/config/www/battery/`  
-- 📱 Multi-device display (2 or 5 devices)  
+Display clean and dynamic battery visuals for any sensor or device in Home Assistant.
+
+- 📊 Battery percentages are **mapped to 8 discrete levels**: 0%, 5%, 15%, 35%, 50%, 75%, 90%, 100%  
+- ⚡ A dedicated **charging overlay icon** is shown when the battery is charging  
+- 🧱 Built using `custom:button-card` and `custom:layout-card` for flexible UI layouts  
+- 🖼️ Icons are stored locally in `/config/www/battery/`  
+- 📱 Supports **2, 5, or more device layouts** for phones, motion sensors, and remotes
 
 ---
 
@@ -11,7 +14,7 @@
 
 ### 1. Upload Battery Icons
 
-Put the following files in `/config/www/battery/`:
+Place the following image files into your Home Assistant `/config/www/battery/` directory:
 
 - `battery_0.png`  
 - `battery_5.png`  
@@ -21,6 +24,9 @@ Put the following files in `/config/www/battery/`:
 - `battery_75.png`  
 - `battery_90.png`  
 - `battery_100.png`  
+- `battery_charging.png` ⬅️ _(used as an overlay when the device is charging)_
+
+> 📂 If the `www` folder doesn’t exist yet, create it under `/config/`.
 
 ---
 
@@ -51,10 +57,13 @@ Put the following files in `/config/www/battery/`:
     <td align="center"><strong>90%</strong></td>
     <td align="center"><strong>100%</strong></td>
   </tr>
+  <tr>
+    <td colspan="4" align="center">
+      <img src="www/battery/battery_charging.png" width="120" height="120" /><br />
+      <strong>Charging Overlay</strong>
+    </td>
+  </tr>
 </table>
-
-
-
 
 ---
 
